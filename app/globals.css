@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Custom font classes */
+.font-syne {
+  font-family: var(--font-syne);
+}
+.font-tajawal {
+  font-family: var(--font-tajawal);
+}
+
+/* Ensure body uses the text color and inherits font */
+body {
+  @apply bg-transparent text-inherit antialiased;
+  min-height: 100vh;
+}
+
+/* Optional: smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
