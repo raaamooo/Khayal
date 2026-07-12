@@ -8,26 +8,25 @@ export const siteConfig = {
     // WhatsApp number - format: +20XXXXXXXXXX (Egypt country code)
     whatsapp: {
       // TODO: Replace with actual WhatsApp number
-      number: '+20 XXX XXX XXXX',
+      number: '+20 122 519 7078',
       label: 'WhatsApp',
       // Uncomment and set actual link when number is known
       // link: 'https://wa.me/20XXXXXXXXXX'
     },
 
-    // Email address
+    // Email address - removed for now
     email: {
-      // TODO: Replace with actual email address
-      address: 'hello@khayal.studio',
-      label: 'Email',
-      link: 'mailto:hello@khayal.studio'
+      address: '',
+      label: '',
+      link: ''
     },
 
     // Instagram handle
     instagram: {
       // TODO: Replace with actual Instagram handle
-      handle: '@khayal.studio',
+      handle: '@khayal.studio.egy',
       label: 'Instagram',
-      link: 'https://instagram.com/khayal.studio'
+      link: 'https://instagram.com/khayal.studio.egy'
     }
   },
 

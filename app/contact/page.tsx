@@ -79,20 +79,24 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* Email Card */}
-                  <div className="bg-surface rounded-[14px] p-6">
-                    <div className="space-y-2">
-                      <p className="text-fog text-xs uppercase tracking-widest">
-                        {contact.contactInfo?.email?.title || "Email"}
-                      </p>
-                      <p className="text-lavender font-bold text-lg">
-                        {siteConfig.contact.email.address}
-                      </p>
-                      <p className="text-fog text-xs">
-                        {contact.contactInfo?.email?.note || "For detailed briefs and project specs"}
-                      </p>
-                    </div>
-                  </div>
+                  {siteConfig.contact.email.address.trim() !== '' ? (
+                    <>
+                      {/* Email Card */}
+                      <div className="bg-surface rounded-[14px] p-6">
+                        <div className="space-y-2">
+                          <p className="text-fog text-xs uppercase tracking-widest">
+                            {contact.contactInfo?.email?.title || "Email"}
+                          </p>
+                          <p className="text-lavender font-bold text-lg">
+                            {siteConfig.contact.email.address}
+                          </p>
+                          <p className="text-fog text-xs">
+                            {contact.contactInfo?.email?.note || "For detailed briefs and project specs"}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
 
                   {/* Instagram Card */}
                   <div className="bg-surface rounded-[14px] p-6">
