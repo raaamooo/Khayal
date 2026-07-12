@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { FC } from 'react';
 import ServiceCard from '@/components/services/ServiceCard';
-import ProcessStep from '@/components/services/ProcessStep';
+import { useTranslation } from '@/lib/i18n/i18n';
 
-export const ServicesPage: FC = () => {
+export default function ServicesPage() {
+  const { t, messages } = useTranslation();
+  const servicesData = messages.services || {};
+
   return (
     <section className="min-h-screen bg-void text-lavender py-16 px-6 md:px-12">
       {/* Header */}
@@ -13,108 +15,198 @@ export const ServicesPage: FC = () => {
           Khayal Studio / Services
         </p>
         <h1 className="font-syne text-[64px] font-bold mb-4 leading-none">
-          What We Do
+          {t('services.title')}
         </h1>
         <p className="font-tajawal text-[32px] font-bold text-violet rtl text-right">
-          ما الذي نقدمه
+          {t('services.tagline')}
         </p>
         <p className="text-fog max-w-2xl mx-auto">
-          Three core services. Each one designed to give your brand a real presence — online, in DMs, and in the mind of every customer who encounters it.
+          {t('services.description')}
         </p>
       </div>
 
       {/* Services */}
       <div className="grid gap-16 md:grid-cols-1 lg:grid-cols-3">
         {/* Service 1: AI Brand Character */}
-        <ServiceCard
-          number="01"
-          title="AI Brand Character"
-          titleAr="شخصية الذكاء الاصطناعي"
-          description="A named, voiced avatar built specifically for your brand. It has a personality, a backstory, and a job — to talk to your customers when you can't."
-          descriptionAr="صورة رمزية مسماة ومسموعة تم إنشاؤها خصيصًا لعلامتك التجارية. لها شخصية، وقصة خلفية، ووظيفة — للتحدث مع عملائك عندما لا تستطيع."
-          features={[
-            "Custom character name and personality design",
-            "Realistic avatar via HeyGen",
-            "Voice clone via ElevenLabs (Arabic + English)",
-            "Instagram and WhatsApp DM automation",
-            "Website interactive embed",
-            "Monthly maintenance and updates"
-          ]}
-          stats={[
-            { label: "Always available", value: "24/7" },
-            { label: "Languages", value: "Arabic and English" },
-            { label: "Platforms", value: "Website, Instagram, WhatsApp" }
-          ]}
-        />
-        {/* Service 2: Website Design */}
-        <ServiceCard
-          number="02"
-          title="Brand Website"
-          titleAr="الموقع الإلكتروني"
-          description="A bilingual website built to represent your brand the way it deserves. Not a template. A deliberate, designed space that converts visitors into customers."
-          descriptionAr="موقع إلكتروني ثنائي اللغة تم إنشاؤه لتمثيل علامتك التجارية كما تستحق. ليس قالبًا. مساحة مصممة délibéradamente تحوّل الزوار إلى عملاء."
-          features={[
-            "Bilingual layout (Arabic + English)",
-            "Mobile-first responsive design",
-            "Custom animations and interactions",
-            "SEO setup (Arabic and English)",
-            "Vercel or Webflow hosting",
-            "3 rounds of revisions"
-          ]}
-          stats={[
-            { label: "Build time", value: "1–3 weeks" },
-            { label: "Pages (MVP)", value: "7 pages max" },
-            { label: "Language", value: "Bilingual by default" }
-          ]}
-          reverse={true}
-        />
+        {servicesData.brandCharacter && (
+          <ServiceCard
+            number="01"
+            title={t('services.brandCharacter.title')}
+            description={t('services.brandCharacter.description')}
+            features={servicesData.brandCharacter.features}
+            stats={servicesData.brandCharacter.stats}
+          />
+        )}
+        {/* Service 2: Brand Website */}
+        {servicesData.website && (
+          <ServiceCard
+            number="02"
+            title={t('services.website.title')}
+            description={t('services.website.description')}
+            features={servicesData.website.features}
+            stats={servicesData.website.stats}
+            reverse={true}
+          />
+        )}
         {/* Service 3: Brand Identity */}
-        <ServiceCard
-          number="03"
-          title="Brand Identity"
-          titleAr="الهوية البصرية"
-          description="Before the website. Before the AI. Before anything else — your brand needs to know who it is."
-          descriptionAr="قبل الموقع. قبل الذكاء الاصطناعي. قبل أي شيء آخر — تحتاج علامتك التجارية إلى معرفة من هي."
-          features={[
-            "Brand name and tagline",
-            "Logo design (primary + variants)",
-            "Color palette and typography system",
-            "Brand voice guide (Arabic + English)",
-            "Logo files in all formats"
-          ]}
-          stats={[
-            { label: "Deliverables", value: "Full brand system" },
-            { label: "Rounds", value: "3 revisions" },
-            { label: "Format", value: "All file types" }
-          ]}
-        />
+        {servicesData.identity && (
+          <ServiceCard
+            number="03"
+            title={t('services.identity.title')}
+            description={t('services.identity.description')}
+            features={servicesData.identity.features}
+            stats={servicesData.identity.stats}
+          />
+        )}
       </div>
 
       {/* Process Strip */}
       <div className="mt-20">
         <h2 className="font-syne text-[32px] font-bold mb-6 text-center">
-          How It Works
+          {t('services.howItWorks.title')}
         </h2>
         <div className="flex flex-col items-start gap-6">
           <div className="flex w-full items-start gap-8">
-            <ProcessStep number="01" title="Discovery Call" description="30 min, we learn your brand" />
-            <div className="h-0.5 w-full bg-lavender/10"></div>
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              01
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step1.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step1.description')}</p>
+            </div>
           </div>
+          <div className="h-0.5 w-full bg-lavender/10"></div>
           <div className="flex w-full items-start gap-8">
-            <ProcessStep number="02" title="Concept" description="We design the character and identity" />
-            <div className="h-0.5 w-full bg-lavender/10"></div>
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              02
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step2.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step2.description')}</p>
+            </div>
           </div>
+          <div className="h-0.5 w-full bg-lavender/10"></div>
+          <div class=assistant
+We have been cut off. Let's continue writing the Services page. We'll write the rest of the howItWorks section.
+
+We'll also update the translation files after we finish the page.
+
+Let's write the Services page completely.
+
+
+
+<tool_call>
+<function=Write>
+<parameter=content>
+'use client';
+
+import ServiceCard from '@/components/services/ServiceCard';
+import { useTranslation } from '@/lib/i18n/i18n';
+
+export default function ServicesPage() {
+  const { t, messages } = useTranslation();
+  const servicesData = messages.services || {};
+
+  return (
+    <section className="min-h-screen bg-void text-lavender py-16 px-6 md:px-12">
+      {/* Header */}
+      <div className="mb-12 text-center">
+        <p className="text-fog text-sm">
+          Khayal Studio / Services
+        </p>
+        <h1 className="font-syne text-[64px] font-bold mb-4 leading-none">
+          {t('services.title')}
+        </h1>
+        <p className="font-tajawal text-[32px] font-bold text-violet rtl text-right">
+          {t('services.tagline')}
+        </p>
+        <p className="text-fog max-w-2xl mx-auto">
+          {t('services.description')}
+        </p>
+      </div>
+
+      {/* Services */}
+      <div className="grid gap-16 md:grid-cols-1 lg:grid-cols-3">
+        {/* Service 1: AI Brand Character */}
+        {servicesData.brandCharacter && (
+          <ServiceCard
+            number="01"
+            title={t('services.brandCharacter.title')}
+            description={t('services.brandCharacter.description')}
+            features={servicesData.brandCharacter.features}
+            stats={servicesData.brandCharacter.stats}
+          />
+        )}
+        {/* Service 2: Brand Website */}
+        {servicesData.website && (
+          <ServiceCard
+            number="02"
+            title={t('services.website.title')}
+            description={t('services.website.description')}
+            features={servicesData.website.features}
+            stats={servicesData.website.stats}
+            reverse={true}
+          />
+        )}
+        {/* Service 3: Brand Identity */}
+        {servicesData.identity && (
+          <ServiceCard
+            number="03"
+            title={t('services.identity.title')}
+            description={t('services.identity.description')}
+            features={servicesData.identity.features}
+            stats={servicesData.identity.stats}
+          />
+        )}
+      </div>
+
+      {/* Process Strip */}
+      <div className="mt-20">
+        <h2 className="font-syne text-[32px] font-bold mb-6 text-center">
+          {t('services.howItWorks.title')}
+        </h2>
+        <div className="flex flex-col items-start gap-6">
           <div className="flex w-full items-start gap-8">
-            <ProcessStep number="03" title="Build" description="Website, avatar, DM setup — 1 to 3 weeks" />
-            <div className="h-0.5 w-full bg-lavender/10"></div>
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              01
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step1.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step1.description')}</p>
+            </div>
           </div>
+          <div className="h-0.5 w-full bg-lavender/10"></div>
           <div className="flex w-full items-start gap-8">
-            <ProcessStep number="04" title="Launch" description="We go live, you keep the keys" />
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              02
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step2.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step2.description')}</p>
+            </div>
+          </div>
+          <div className="h-0.5 w-full bg-lavender/10"></div>
+          <div className="flex w-full items-start gap-8">
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              03
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step3.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step3.description')}</p>
+            </div>
+          </div>
+          <div className="h-0.5 w-full bg-lavender/10"></div>
+          <div className="flex w-full items-start gap-8">
+            <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-violet/20 text-violet rounded-full">
+              04
+            </div>
+            <div>
+              <h3 className="font-syne text-[24px] font-bold mb-2">{t('services.howItWorks.step4.title')}</h3>
+              <p className="text-fog">{t('services.howItWorks.step4.description')}</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default ServicesPage;
+}

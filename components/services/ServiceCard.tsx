@@ -11,20 +11,16 @@ interface Stat {
 interface ServiceCardProps {
   number: string;
   title: string;
-  titleAr: string;
   description: string;
-  descriptionAr: string;
   features: string[];
   stats: Stat[];
-  reverse?: boolean; // if true, stats on left, content on right
+  readonly reverse?: boolean; // if true, stats on left, content on right
 }
 
 export const ServiceCard: FC<ServiceCardProps> = ({
   number,
   title,
-  titleAr,
   description,
-  descriptionAr,
   features,
   stats,
   reverse = false,
@@ -43,10 +39,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({
             </div>
             <div>
               <h2 className="font-syne text-[40px] font-bold mb-2">{title}</h2>
-              <p className="font-tajawal text-[22px] font-bold text-fog rtl mb-4">{titleAr}</p>
             </div>
             <p className="text-fog mb-6">{description}</p>
-            <p className="font-tajawal text-fog rtl mb-6">{descriptionAr}</p>
             <ul className="space-y-2 text-fog">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start">
@@ -79,10 +73,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({
             </div>
             <div>
               <h2 className="font-syne text-[40px] font-bold mb-2">{title}</h2>
-              <p className="font-tajawal text-[22px] font-bold text-fog rtl mb-4">{titleAr}</p>
             </div>
             <p className="text-fog mb-6">{description}</p>
-            <p className="font-tajawal text-fog rtl mb-6">{descriptionAr}</p>
             <ul className="space-y-2 text-fog">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start">

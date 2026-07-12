@@ -1,187 +1,92 @@
 'use client';
 
-import Link from 'next/link';
-import { siteConfig } from '@/src/config/siteConfig';
+import { useTranslation } from '@/lib/i18n/i18n';
 
 export default function Footer() {
-  return (
-    <footer className="bg-surface pt-16 pb-10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo Section */}
-          <div className="flex flex-col items-start md:items-center text-center md:text-left space-y-6">
-            {/* The K Mark + Wordmark */}
-            <div className="flex items-center space-x-3 rtl:space-x-reverse justify-center md:justify-start">
-              <div className="w-10 h-10 flex-shrink-0 relative">
-                {/* Outer circle */}
-                <circle
-                  cx="5"
-                  cy="5"
-                  r="4.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  className="stroke-violet"
-                />
-                {/* Inner diagonal line (top-left to bottom-right) */}
-                <line
-                  x1="1"
-                  y1="1"
-                  x2="9"
-                  y2="9"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="stroke-violet"
-                />
-                {/* Inner diagonal line (bottom-left to top-right) */}
-                <line
-                  x1="1"
-                  y1="9"
-                  x2="9"
-                  y2="1"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="stroke-violet"
-                />
-              </div>
-              <span className="font-syne text-xl font-bold text-lav rtl:text-right">KHAYAL</span>
-            </div>
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear().toString();
 
-            {/* Arabic Tagline */}
-            <p className="font-tajawal text-[18px] text-violet rtl text-center md:text-left">
-              نحن خيال.
+  return (
+    <footer className='bg-background/50 backdrop-blur-sm backdrop-support:bg-background/50 backdrop-support:backdrop-blur'>
+      <div className='max-w-7xl mx-auto px-6 py-12'>
+        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-4'>
+          <div>
+            <h3 className='font-syne text-lg mb-4'>{t('footer.quickLinks')}</h3>
+            <ul className='space-y-2 text-fog'>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.home')}
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.services')}
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.work')}
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.pricing')}
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.about')}
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-lav transition-colors'>
+                  {t('nav.contact')}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className='font-syne text-lg mb-4'>{t('footer.contact')}</h3>
+            <p className='flex items-center space-x-2 text-fog'>
+              <span className='flex-shrink-0'>
+                {/* WhatsApp icon */}
+
+              </span>
+              <span>{t('footer.whatsApp')}</span>
+            </p>
+            <p className='flex items-center space-x-2 text-fog mt-2'>
+              <span className='flex-shrink-0'>
+                {/* Email icon */}
+
+              </span>
+              <span>{t('footer.email')}</span>
+            </p>
+            <p className='flex items-center space-x-2 text-fog mt-2'>
+              <span className='flex-shrink-0'>
+                {/* Instagram icon */}
+
+              </span>
+              <span>{t('footer.instagram')}</span>
             </p>
           </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="fog text-xs uppercase tracking-widest mb-2">
-              Quick Links
-            </h3>
-            <nav className="space-y-2">
-              <Link
-                href="/"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="/services"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                Services
-              </Link>
-              <Link
-                href="/work"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                Work
-              </Link>
-              <Link
-                href="/pricing"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                Pricing
-              </Link>
-              <Link
-                href="/about"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="text-fog hover:text-lav transition-colors"
-              >
-                Contact
-              </Link>
-            </nav>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="fog text-xs uppercase tracking-widest mb-2">
-              Contact
-            </h3>
-            <div className="space-y-3">
-              {/* WhatsApp */}
-              <div className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  📱
-                </div>
-                <div>
-                  <p className="text-fog text-xs">WhatsApp</p>
-                  <a
-                    href={`https://wa.me/${siteConfig.contact.whatsapp.number.replace(/\s+/g, '').replace('+', '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lav font-semibold hover:text-violet transition-colors"
-                  >
-                    {siteConfig.contact.whatsapp.number}
-                  </a>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  ✉️
-                </div>
-                <div>
-                  <p className="text-fog text-xs">Email</p>
-                  <a
-                    href={siteConfig.contact.email.link}
-                    className="text-lav font-semibold hover:text-violet transition-colors"
-                  >
-                    {siteConfig.contact.email.address}
-                  </a>
-                </div>
-              </div>
-
-              {/* Instagram */}
-              <div className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  📸
-                </div>
-                <div>
-                  <p className="text-fog text-xs">Instagram</p>
-                  <a
-                    href={siteConfig.contact.instagram.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lav font-semibold hover:text-violet transition-colors"
-                  >
-                    {siteConfig.contact.instagram.handle}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-
-        {/* Divider */}
-        <div className="mt-12 border-t border-lavender/10"></div>
-
-        {/* Copyright */}
-        <div className="mt-8 flex flex-col items-center text-center md:flex-row md:justify-between">
-          <p className="text-fog text-xs">
-            © {new Date().getFullYear()} Khayal Studio. All rights reserved.
-          </p>
-          <div className="flex flex-col items-center md:flex-row mt-4 md:mt-0 md:space-x-4">
-            <a
-              href="/"
-              className="text-fog hover:text-lav transition-colors"
-            >
-              English
-            </a>
-            <a
-              href="/"
-              className="text-fog hover:text-lav transition-colors rtl"
-            >
-              العربية
-            </a>
+        <div className='mt-12 pt-8 border-t border-border/50'>
+          <div className='flex flex-col items-center text-center space-y-4'>
+            <p className='text-fog'>
+              {/* Replace placeholders for year */}
+              {t('footer.copyright')
+                .replace('{year}', currentYear)
+                .replace('{السنة}', currentYear)}
+            </p>
+            <div className='flex items-center space-x-4'>
+              <a href='#' className='text-fog hover:text-lav transition-colors'>
+                {t('footer.language.english')}
+              </a>
+              <span className='w-0.5 h-0.5 bg-gray-400'></span>
+              <a href='#' className='text-fog hover:text-lav transition-colors'>
+                {t('footer.language.arabic')}
+              </a>
+            </div>
           </div>
         </div>
       </div>

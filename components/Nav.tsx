@@ -1,26 +1,27 @@
 'use client';
 
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { siteConfig } from '@/src/config/siteConfig'
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useTranslation } from '@/lib/i18n/i18n';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Nav() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
-  const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const { t, locale, changeLanguage } = useTranslation();
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   // Close mobile menu when navigating to a new page
   useEffect(() => {
     if (isOpen) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <nav className='bg-white/5 backdrop-blur-sm backdrop-support:bg-white/50 backdrop-support:backdrop-blur'>
@@ -80,7 +81,7 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              Home
+              {t('nav.home')}
             </Link>
             <Link
               href='/services'
@@ -90,7 +91,7 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              Services
+              {t('nav.services')}
             </Link>
             <Link
               href='/work'
@@ -100,43 +101,44 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              Work
+              {t('nav.work')}
             </Link>
             <Link
               href='/pricing'
               className={`${pathname === '/pricing'
                 ? 'text-violet font-semibold'
-                : 'text-hover text-fog hover:text-lav transition-colors'}`
-              }
+                : 'text-hover text-fog hover:text-lav transition-colors'}`}
             >
-              Pricing
+              {t('nav.pricing')}
             </Link>
             <Link
               href='/about'
               className={
                 `${pathname === '/about'
                   ? 'text-violet font-semibold'
-                  : 'text-hover text-fog hover:text-lav transition-colors'}`
-              }
-            >
-              About
-            </Link>
+                  : 'text-hover text-fog hover:text-lav transition-colors'}`}
+              >
+                {t('nav.about')}
+              </Link>
             <Link
               href='/contact'
               className={
                 `${pathname === '/contact'
                   ? 'text-violet font-semibold'
-                  : 'text-hover text-fog hover:text-lav transition-colors'}`
-              }
-            >
-              Contact
-            </Link>
+                  : 'text-hover text-fog hover:text-lav transition-colors'}`}
+              >
+                {t('nav.contact')}
+              </Link>
+            {/* Language Switcher */}
+            <div className='flex-shrink-0 ml-4 flex items-center'>
+              <LanguageSwitcher />
+            </div>
           </div>
           <div className='flex items-center pt-4'>
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              aria-label='Open menu'
+              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               className='md:hidden p-2 rounded-full hover:bg-lavender/20'
             >
               {isOpen ? (
@@ -157,56 +159,54 @@ export default function Nav() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <motion.div
-            id='nav-menu'
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            className='md:hidden'
-          >
+          <div className='mt-6 md:hidden'>
             <div className='bg-white/80 backdrop-blur-sm backdrop-support:bg-white/80 backdrop-support:backdrop-blur'>
-              <div className='px-6 pt-8 pb-4 space-y-6'>
+              <nav className='px-6 pt-8 pb-4 space-y-6'>
                 <Link
                   href='/'
                   className={`${pathname === '/' || (pathname === '' && typeof window !== 'undefined') ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  Home
+                  {t('nav.home')}
                 </Link>
                 <Link
                   href='/services'
                   className={`${pathname === '/services' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  Services
+                  {t('nav.services')}
                 </Link>
                 <Link
                   href='/work'
                   className={`${pathname === '/work' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  Work
+                  {t('nav.work')}
                 </Link>
                 <Link
                   href='/pricing'
                   className={`${pathname === '/pricing' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  Pricing
+                  {t('nav.pricing')}
                 </Link>
                 <Link
                   href='/about'
                   className={`${pathname === '/about' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  About
+                  {t('nav.about')}
                 </Link>
                 <Link
                   href='/contact'
                   className={`${pathname === '/contact' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  Contact
+                  {t('nav.contact')}
                 </Link>
-              </div>
+                {/* Language Switcher in mobile menu */}
+                <div className='flex items-center mt-6'>
+                  <LanguageSwitcher />
+                </div>
+              </nav>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </nav>
-  )
+  );
 }

@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslation } from "@/lib/i18n/i18n";
 
 export const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="min-h-[100vh] flex flex-col items-center bg-void">
       {/* We'll wrap the content in a motion container for stagger animation */}
@@ -30,14 +33,14 @@ export const Hero = () => {
           }}
           className="bg-violet/10 border border-violet/20 text-violet rounded-full px-4 py-1.5 text-xs tracking-widest uppercase mb-6"
         >
-          AI · Brand Characters · Websites
+          {t('hero.pill')}
         </motion.div>
 
         {/* English headline */}
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={{
+          vars={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
           }}
@@ -46,8 +49,7 @@ export const Hero = () => {
           <h1
             className="font-syne text-[72px] leading-none text-lavender md:text-[72px] sm:text-[40px]"
           >
-            We build the character<br />
-            behind your brand.
+            {t('hero.title')}
           </h1>
         </motion.div>
 
@@ -64,7 +66,7 @@ export const Hero = () => {
           <h2
             className="font-tajawal text-[28px] text-violet direction-rtl text-right md:text-[28px] sm:text-[20px]"
           >
-            نبني الشخصية خلف علامتك التجارية
+            {t('hero.titleAr')}
           </h2>
         </motion.div>
 
@@ -78,7 +80,7 @@ export const Hero = () => {
           }}
           className="max-w-lg mx-auto text-fog text-[16px] leading-relaxed mb-10"
         >
-          AI-powered brand characters that speak, sell, and connect with your customers — 24/7, in any language.
+          {t('hero.description')}
         </motion.div>
 
         {/* CTA buttons */}
@@ -95,13 +97,13 @@ export const Hero = () => {
             href="#work"
             className="bg-violet text-white px-8 py-3.5 rounded-full text-sm font-bold tracking-wide hover:bg-violet/90 transition-colors"
           >
-            See Our Work
+            {t('hero.cta.viewWork')}
           </a>
           <a
             href="#demo"
             className="border border-lavender/20 text-lavender px-8 py-3.5 rounded-full text-sm hover:border-lavender/40 transition-colors"
           >
-            Book a Demo
+            {t('hero.cta.bookDemo')}
           </a>
         </motion.div>
 
@@ -143,8 +145,8 @@ export const Hero = () => {
               />
             </svg>
           </motion.div>
-          <span>SCROLL</span>
-        </motion.div>
+          <span>{t('hero.scroll')}</span>
+        </morian.div>
       </motion.div>
     </section>
   );
