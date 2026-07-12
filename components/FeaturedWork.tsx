@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
 
@@ -33,9 +33,54 @@ export const FeaturedWork = () => {
                 AI brand character that handles customer inquiries, repair quotes, and MacBook advice 24/7.
               </p>
             </div>
-            {/* Placeholder for screenshot */}
-            <div className="w-full h-48 bg-surface rounded-xl flex items-center justify-center text-fog/50">
-              Screenshot
+            {/* Abstract Visual - K mark variant */}
+            <div className="w-full h-48 bg-surface rounded-xl flex items-center justify-center">
+              <div className="relative w-32 h-32">
+                {/* Outer ring - violet */}
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  stroke="rgba(162, 89, 255, 0.3)"
+                  strokeWidth="2"
+                  fill="none"
+                />
+                {/* Inner K shape - two lines */}
+                <line
+                  x1="8"
+                  y1="8"
+                  x2="8"
+                  y2="24"
+                  stroke="rgba(162, 89, 255, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="8"
+                  y1="16"
+                  x2="24"
+                  y2="10"
+                  stroke="rgba(162, 89, 255, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="8"
+                  y1="16"
+                  x2="24"
+                  y2="22"
+                  stroke="rgba(162, 89, 255, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                {/* Center dot - ember */}
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="2"
+                  fill="rgba(255, 107, 53, 0.7)"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -59,9 +104,54 @@ export const FeaturedWork = () => {
                 A nostalgic café character built for Instagram, WhatsApp, and the café's website. Bilingual, in-character.
               </p>
             </div>
-            {/* Placeholder for screenshot */}
-            <div className="w-full h-48 bg-surface rounded-xl flex items-center justify-center text-fog/50">
-              Screenshot
+            {/* Abstract Visual - K mark variant */}
+            <div className="w-full h-48 bg-surface rounded-xl flex items-center justify-center">
+              <div className="relative w-32 h-32">
+                {/* Outer ring - ember */}
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  stroke="rgba(255, 107, 53, 0.3)"
+                  strokeWidth="2"
+                  fill="none"
+                />
+                {/* Inner K shape - two lines */}
+                <line
+                  x1="8"
+                  y1="8"
+                  x2="8"
+                  y2="24"
+                  stroke="rgba(255, 107, 53, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="8"
+                  y1="16"
+                  x2="24"
+                  y2="10"
+                  stroke="rgba(255, 107, 53, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="8"
+                  y1="16"
+                  x2="24"
+                  y2="22"
+                  stroke="rgba(255, 107, 53, 0.6)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                {/* Center dot - violet */}
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="2"
+                  fill="rgba(162, 89, 255, 0.7)"
+                />
+              </div>
             </div>
           </motion.div>
         </div>

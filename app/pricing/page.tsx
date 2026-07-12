@@ -18,7 +18,7 @@ export default function PricingPage() {
         <h1 className="font-syne text-[64px] font-bold mb-4">
           Transparent Pricing
         </h1>
-        <p className="font-tajawal text-[32px] font-bold text-violet rtl">
+        <p className="font-tajawal text-[32px] font-bold text-violet rtl text-right">
           أسعار واضحة
         </p>
         <p className="text-fog max-w-xl mx-auto">

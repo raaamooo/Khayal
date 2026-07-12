@@ -15,7 +15,7 @@ export const ServicesPage: FC = () => {
         <h1 className="font-syne text-[64px] font-bold mb-4 leading-none">
           What We Do
         </h1>
-        <p className="font-tajawal text-[32px] font-bold text-violet rtl">
+        <p className="font-tajawal text-[32px] font-bold text-violet rtl text-right">
           ما الذي نقدمه
         </p>
         <p className="text-fog max-w-2xl mx-auto">

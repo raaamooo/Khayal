@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/src/config/siteConfig';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -60,13 +61,16 @@ export default function Contact() {
                         WhatsApp
                       </p>
                       <p className="text-lavender font-bold text-lg">
-                        +20 XXX XXX XXXX
+                        {siteConfig.contact.whatsapp.number}
                       </p>
-                      <button
+                      <a
+                        href={`https://wa.me/${siteConfig.contact.whatsapp.number.replace(/\s+/g, '').replace('+', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-violet text-white rounded-full text-sm px-6 py-2"
                       >
                         Message Us
-                      </button>
+                      </a>
                       <p className="text-fog text-xs">
                         Fastest response — usually within 2 hours
                       </p>
@@ -80,7 +84,7 @@ export default function Contact() {
                         Email
                       </p>
                       <p className="text-lavender font-bold text-lg">
-                        hello@khayal.studio
+                        {siteConfig.contact.email.address}
                       </p>
                       <p className="text-fog text-xs">
                         For detailed briefs and project specs
@@ -95,7 +99,7 @@ export default function Contact() {
                         Instagram
                       </p>
                       <p className="text-lavender font-bold text-lg">
-                        @khayal.studio
+                        {siteConfig.contact.instagram.handle}
                       </p>
                       <p className="text-fog text-xs">
                         Follow our work
@@ -107,14 +111,13 @@ export default function Contact() {
                 {/* Booking Note */}
                 <div className="bg-violet/10 border border-violet/20 rounded-xl p-5">
                   <p className="text-lavender text-sm leading-relaxed">
-                    Prefer a call? Book a free 30-minute discovery session.
-                    No pitch. Just a conversation about your brand.
+                    {siteConfig.booking.description}
                   </p>
                   <a
-                    href="#"
+                    href={siteConfig.booking.link}
                     className="border border-violet text-violet rounded-full px-6 py-2 text-sm"
                   >
-                    Book a Call
+                    {siteConfig.booking.label}
                   </a>
                 </div>
               </div>
@@ -164,7 +167,7 @@ export default function Contact() {
                           value={whatsapp}
                           onChange={(e) => setWhatsApp(e.target.value)}
                           className="bg-void border border-lavender/10 rounded-xl px-4 py-3 text-lavender w-full focus:border-violet focus:outline-none transition-colors placeholder:text-fog"
-                          placeholder="+20 XXX XXX XXXX"
+                          placeholder={siteConfig.contact.whatsapp.number}
                           required
                         />
                       </div>
