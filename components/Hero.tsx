@@ -40,7 +40,7 @@ export const Hero = () => {
         <motion.div
           initial="hidden"
           animate="visible"
-          vars={{
+          variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
           }}
@@ -146,7 +146,7 @@ export const Hero = () => {
             </svg>
           </motion.div>
           <span>{t('hero.scroll')}</span>
-        </morian.div>
+        </motion.div>
       </motion.div>
     </section>
   );
