@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useTranslation } from '@/lib/i18n/i18n';
+import { useLanguage } from '@/context/LanguageContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Nav() {
+  const { language, setLanguage, content } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { t, locale, changeLanguage } = useTranslation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -81,7 +81,7 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              {t('nav.home')}
+              {content.nav.home}
             </Link>
             <Link
               href='/services'
@@ -91,7 +91,7 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              {t('nav.services')}
+              {content.nav.services}
             </Link>
             <Link
               href='/work'
@@ -101,34 +101,36 @@ export default function Nav() {
                   : 'text-hover text-fog hover:text-lav transition-colors'}`
               }
             >
-              {t('nav.work')}
+              {content.nav.work}
             </Link>
             <Link
               href='/pricing'
               className={`${pathname === '/pricing'
                 ? 'text-violet font-semibold'
                 : 'text-hover text-fog hover:text-lav transition-colors'}`}
-            >
-              {t('nav.pricing')}
-            </Link>
+              >
+                {content.nav.pricing}
+              </Link>
             <Link
               href='/about'
               className={
                 `${pathname === '/about'
                   ? 'text-violet font-semibold'
-                  : 'text-hover text-fog hover:text-lav transition-colors'}`}
-              >
-                {t('nav.about')}
-              </Link>
+                  : 'text-hover text-fog hover:text-lav transition-colors'}`
+              }
+            >
+              {content.nav.about}
+            </Link>
             <Link
               href='/contact'
               className={
                 `${pathname === '/contact'
                   ? 'text-violet font-semibold'
-                  : 'text-hover text-fog hover:text-lav transition-colors'}`}
-              >
-                {t('nav.contact')}
-              </Link>
+                  : 'text-hover text-fog hover:text-lav transition-colors'}`
+              }
+            >
+              {content.nav.contact}
+            </Link>
             {/* Language Switcher */}
             <div className='flex-shrink-0 ml-4 flex items-center'>
               <LanguageSwitcher />
@@ -138,7 +140,7 @@ export default function Nav() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-label={isOpen ? content.nav.closeMenu : content.nav.openMenu}
               className='md:hidden p-2 rounded-full hover:bg-lavender/20'
             >
               {isOpen ? (
@@ -166,37 +168,37 @@ export default function Nav() {
                   href='/'
                   className={`${pathname === '/' || (pathname === '' && typeof window !== 'undefined') ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.home')}
+                  {content.nav.home}
                 </Link>
                 <Link
                   href='/services'
                   className={`${pathname === '/services' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.services')}
+                  {content.nav.services}
                 </Link>
                 <Link
                   href='/work'
                   className={`${pathname === '/work' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.work')}
+                  {content.nav.work}
                 </Link>
                 <Link
                   href='/pricing'
                   className={`${pathname === '/pricing' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.pricing')}
+                  {content.nav.pricing}
                 </Link>
                 <Link
                   href='/about'
                   className={`${pathname === '/about' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.about')}
+                  {content.nav.about}
                 </Link>
                 <Link
                   href='/contact'
                   className={`${pathname === '/contact' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
-                  {t('nav.contact')}
+                  {content.nav.contact}
                 </Link>
                 {/* Language Switcher in mobile menu */}
                 <div className='flex items-center mt-6'>

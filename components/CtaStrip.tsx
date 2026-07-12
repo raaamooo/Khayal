@@ -1,8 +1,11 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
+import { useLanguage } from '@/context/LanguageContext';
 
 export const CtaStrip = () => {
+  const { content } = useLanguage();
+
   return (
     <section className="bg-surface rounded-[14px] p-16 text-center my-20">
       <motion.div
@@ -15,7 +18,7 @@ export const CtaStrip = () => {
         className="mb-6"
       >
         <h1 className="font-syne text-[48px] text-lavender leading-tight">
-          Ready to give your brand a voice?
+          {content.pricing.cta?.title || 'Ready to give your brand a voice?'}
         </h1>
       </motion.div>
 
@@ -29,7 +32,7 @@ export const CtaStrip = () => {
         className="mb-8"
       >
         <p className="font-tajawal text-[24px] text-violet direction-rtl text-right">
-          هل أنت مستعد لإعطاء علامتك صوتاً؟
+          {content.pricing.cta?.titleAr || 'هل أنت مستعد لإعطاء علامتك صوتاً？'}
         </p>
       </motion.div>
 
@@ -45,7 +48,7 @@ export const CtaStrip = () => {
           href="#contact"
           className="bg-violet text-white rounded-full px-10 py-4 text-base font-bold hover:bg-violet/90 transition-colors"
         >
-          Book a Free Call
+          {content.pricing.cta?.button || 'Book a Free Call'}
         </a>
       </motion.div>
     </section>

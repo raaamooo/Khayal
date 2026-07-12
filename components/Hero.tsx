@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
-import { useTranslation } from "@/lib/i18n/i18n";
+import { useLanguage } from '@/context/LanguageContext';
 
 export const Hero = () => {
-  const { t } = useTranslation();
+  const { content } = useLanguage();
 
   return (
     <section className="min-h-[100vh] flex flex-col items-center bg-void">
@@ -33,7 +33,7 @@ export const Hero = () => {
           }}
           className="bg-violet/10 border border-violet/20 text-violet rounded-full px-4 py-1.5 text-xs tracking-widest uppercase mb-6"
         >
-          {t('hero.pill')}
+          {content.hero.pill}
         </motion.div>
 
         {/* English headline */}
@@ -49,7 +49,7 @@ export const Hero = () => {
           <h1
             className="font-syne text-[72px] leading-none text-lavender md:text-[72px] sm:text-[40px]"
           >
-            {t('hero.title')}
+            {content.hero.title}
           </h1>
         </motion.div>
 
@@ -66,7 +66,7 @@ export const Hero = () => {
           <h2
             className="font-tajawal text-[28px] text-violet direction-rtl text-right md:text-[28px] sm:text-[20px]"
           >
-            {t('hero.titleAr')}
+            {content.hero.titleAr}
           </h2>
         </motion.div>
 
@@ -80,7 +80,7 @@ export const Hero = () => {
           }}
           className="max-w-lg mx-auto text-fog text-[16px] leading-relaxed mb-10"
         >
-          {t('hero.description')}
+          {content.hero.description}
         </motion.div>
 
         {/* CTA buttons */}
@@ -97,13 +97,13 @@ export const Hero = () => {
             href="#work"
             className="bg-violet text-white px-8 py-3.5 rounded-full text-sm font-bold tracking-wide hover:bg-violet/90 transition-colors"
           >
-            {t('hero.cta.viewWork')}
+            {content.hero.cta.viewWork}
           </a>
           <a
             href="#demo"
             className="border border-lavender/20 text-lavender px-8 py-3.5 rounded-full text-sm hover:border-lavender/40 transition-colors"
           >
-            {t('hero.cta.bookDemo')}
+            {content.hero.cta.bookDemo}
           </a>
         </motion.div>
 
@@ -145,7 +145,7 @@ export const Hero = () => {
               />
             </svg>
           </motion.div>
-          <span>{t('hero.scroll')}</span>
+          <span>{content.hero.scroll}</span>
         </motion.div>
       </motion.div>
     </section>

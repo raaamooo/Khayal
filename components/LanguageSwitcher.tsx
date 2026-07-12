@@ -1,23 +1,23 @@
 'use client';
 
-import { useTranslation } from '@/lib/i18n/i18n';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function LanguageSwitcher() {
-  const { t, locale, changeLanguage } = useTranslation();
+  const { language, setLanguage, content } = useLanguage();
 
   return (
     <div className="flex items-center space-x-2">
-      <span className="text-fog text-xs">{t('nav.language')}: </span>
+      <span className="text-fog text-xs">{language === 'en' ? 'EN' : 'ع'}</span>
       <button
-        onClick={() => changeLanguage(locale === 'en' ? 'ar' : 'en')}
-        aria-label={`Switch to ${locale === 'en' ? 'Arabic' : 'English'}`}
+        onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+        aria-label={`Switch to ${language === 'en' ? content.footer.language.arabic : content.footer.language.english}`}
         className={`px-3 py-1 rounded-full text-sm font-syne ${
-          locale === 'en'
+          language === 'en'
             ? 'bg-violet text-white'
             : 'bg-violet/20 text-violet hover:bg-violet/30'
         }`}
       >
-        {locale === 'en' ? (
+        {language === 'en' ? (
           <>
             <span className='mr-1'>EN</span>
           </>

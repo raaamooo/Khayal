@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 import { siteConfig } from '@/src/config/siteConfig';
 
 export default function Contact() {
+  const { content } = useLanguage();
+  const contact = content.contact || {};
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [whatsapp, setWhatsApp] = useState('');
@@ -29,14 +32,13 @@ export default function Contact() {
       >
         <div className="text-center py-20">
           <h1 className="font-syne text-[64px] text-lavender mb-4">
-            Let's Talk.
+            {contact.header?.title || "Let's Talk."}
           </h1>
           <p className="font-tajawal text-[32px] text-violet rtl text-right">
-            لنتحدث.
+            {contact.header?.titleAr || "لنتحدث."}
           </p>
           <p className="font-syne text-[22px] text-fog max-w-2xl mx-auto leading-relaxed">
-            Tell us about your brand.
-            We'll tell you what we can build.
+            {contact.header?.description || "Tell us about your brand. We'll tell you what we can build."}
           </p>
         </div>
       </motion.div>
@@ -58,7 +60,7 @@ export default function Contact() {
                   <div className="bg-surface rounded-[14px] p-6">
                     <div className="space-y-2">
                       <p className="text-fog text-xs uppercase tracking-widest">
-                        WhatsApp
+                        {contact.contactInfo?.whatsapp?.title || "WhatsApp"}
                       </p>
                       <p className="text-lavender font-bold text-lg">
                         {siteConfig.contact.whatsapp.number}
@@ -69,10 +71,10 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         className="bg-violet text-white rounded-full text-sm px-6 py-2"
                       >
-                        Message Us
+                        {contact.contactInfo?.whatsapp?.action || "Message Us"}
                       </a>
                       <p className="text-fog text-xs">
-                        Fastest response — usually within 2 hours
+                        {contact.contactInfo?.whatsapp?.note || "Fastest response — usually within 2 hours"}
                       </p>
                     </div>
                   </div>
@@ -81,13 +83,13 @@ export default function Contact() {
                   <div className="bg-surface rounded-[14px] p-6">
                     <div className="space-y-2">
                       <p className="text-fog text-xs uppercase tracking-widest">
-                        Email
+                        {contact.contactInfo?.email?.title || "Email"}
                       </p>
                       <p className="text-lavender font-bold text-lg">
                         {siteConfig.contact.email.address}
                       </p>
                       <p className="text-fog text-xs">
-                        For detailed briefs and project specs
+                        {contact.contactInfo?.email?.note || "For detailed briefs and project specs"}
                       </p>
                     </div>
                   </div>
@@ -96,13 +98,13 @@ export default function Contact() {
                   <div className="bg-surface rounded-[14px] p-6">
                     <div className="space-y-2">
                       <p className="text-fog text-xs uppercase tracking-widest">
-                        Instagram
+                        {contact.contactInfo?.instagram?.title || "Instagram"}
                       </p>
                       <p className="text-lavender font-bold text-lg">
                         {siteConfig.contact.instagram.handle}
                       </p>
                       <p className="text-fog text-xs">
-                        Follow our work
+                        {contact.contactInfo?.instagram?.note || "Follow our work"}
                       </p>
                     </div>
                   </div>
@@ -130,14 +132,14 @@ export default function Contact() {
                       {/* Your Name */}
                       <div>
                         <label className="block text-fog text-sm mb-2">
-                          Your Name
+                          {contact.form?.name || "Your Name"}
                         </label>
                         <input
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           className="bg-void border border-lavender/10 rounded-xl px-4 py-3 text-lavender w-full focus:border-violet focus:outline-none transition-colors placeholder:text-fog"
-                          placeholder="Your Name"
+                          placeholder={contact.form?.placeholders?.name || "Your Name"}
                           required
                         />
                       </div>
@@ -145,14 +147,14 @@ export default function Contact() {
                       {/* Email */}
                       <div>
                         <label className="block text-fog text-sm mb-2">
-                          Email
+                          {contact.form?.email || "Email"}
                         </label>
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           className="bg-void border border-lavender/10 rounded-xl px-4 py-3 text-lavender w-full focus:border-violet focus:outline-none transition-colors placeholder:text-fog"
-                          placeholder="your@email.com"
+                          placeholder={contact.form?.placeholders?.email || "your@email.com"}
                           required
                         />
                       </div>
@@ -160,7 +162,7 @@ export default function Contact() {
                       {/* WhatsApp Number */}
                       <div>
                         <label className="block text-fog text-sm mb-2">
-                          WhatsApp Number
+                          {contact.form?.whatsappNumber || "WhatsApp Number"}
                         </label>
                         <input
                           type="tel"
@@ -175,7 +177,7 @@ export default function Contact() {
                       {/* Service Interested In */}
                       <div>
                         <label className="block text-fog text-sm mb-2">
-                          Service Interested In
+                          {contact.form?.serviceInterestedIn || "Service Interested In"}
                         </label>
                         <select
                           value={service}
@@ -183,36 +185,25 @@ export default function Contact() {
                           className="bg-void border border-lavender/10 rounded-xl px-4 py-3 text-lavender w-full focus:border-violet focus:outline-none transition-colors placeholder:text-fog"
                           required
                         >
-                          <option value="">Select a service</option>
-                          <option value="AI Brand Character">
-                            AI Brand Character
-                          </option>
-                          <option value="Website Only">
-                            Website Only
-                          </option>
-                          <option value="Full Identity + Website">
-                            Full Identity + Website
-                          </option>
-                          <option value="Bundle Deal">
-                            Bundle Deal
-                          </option>
-                          <option value="Not sure yet">
-                            Not sure yet
-                          </option>
+                          {contact.form?.serviceOptions?.map((option, index) => (
+                            <option key={index} value={option}>
+                              {option}
+                            }
+                          ))}
                         </select>
                       </div>
 
                       {/* Message */}
                       <div>
                         <label className="block text-fog text-sm mb-2">
-                          Tell us about your brand
+                          {contact.form?.message || "Tell us about your brand"}
                         </label>
                         <textarea
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           rows={5}
                           className="bg-void border border-lavender/10 rounded-xl px-4 py-3 text-lavender w-full focus:border-violet focus:outline-none transition-colors placeholder:text-fog"
-                          placeholder="Describe your brand, goals, and what you're looking for..."
+                          placeholder={contact.form?.placeholders?.message || "Describe your brand, goals, and what you're looking for..."}
                           required
                         />
                       </div>
@@ -222,23 +213,23 @@ export default function Contact() {
                         type="submit"
                         className="bg-violet text-white rounded-xl py-4 w-full font-bold text-base hover:bg-violet/90 transition-colors"
                       >
-                        Send Message
+                        {contact.form?.submitButton || "Send Message"}
                       </button>
                     </form>
                   ) : (
                     <div className="text-center space-y-4">
                       {/* Checkmark Icon */}
                       <div className="text-violet text-[48px] mb-4">
-                        ✓
+                        {contact.form?.success?.checkmark || "✓"}
                       </div>
                       <h1 className="font-syne text-[36px] text-lavender mb-2">
-                        We got it.
+                        {contact.form?.success?.title || "We got it."}
                       </h1>
                       <p className="font-tajawal text-[24px] text-violet rtl text-right">
-                        استلمنا رسالتك.
+                        {contact.form?.success?.titleAr || "استلمنا رسالتك."}
                       </p>
                       <p className="text-fog text-[18px] leading-relaxed max-w-md mx-auto">
-                        We'll be in touch on WhatsApp within 24 hours.
+                        {contact.form?.success?.description || "We'll be in touch on WhatsApp within 24 hours."}
                       </p>
                     </div>
                   )}

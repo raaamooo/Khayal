@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function WorkFilters() {
-  const [activeFilter, setActiveFilter] = useState('All')
+  const { content } = useLanguage()
+  const work = content.work || {}
+  const filters = work.filters || ['All', 'AI Brand Character', 'Website', 'Brand Identity']
 
-  const filters = ['All', 'AI Brand Character', 'Website', 'Brand Identity']
+  // Set initial state to first filter (typically 'All' or localized equivalent)
+  const [activeFilter, setActiveFilter] = useState(filters[0] || 'All')
 
   return (
     <div className="flex flex-wrap gap-4 mb-8">

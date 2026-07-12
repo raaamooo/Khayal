@@ -1,5 +1,7 @@
 'use client';
 
+import { useLanguage } from '@/context/LanguageContext';
+
 type Plan = {
   name: string;
   priceRangeEgp: [number, number]; // [min, max] per month
@@ -7,55 +9,66 @@ type Plan = {
   isPopular?: boolean;
 };
 
-const plans: Plan[] = [
-  {
-    name: 'Basic',
-    priceRangeEgp: [500, 900],
-    features: [
-      'Basic website hosting',
-      'Email support (24h response)',
-      'Monthly security scan',
-    ],
-  },
-  {
-    name: 'Standard',
-    priceRangeEgp: [1500, 2500],
-    features: [
-      'Everything in Basic',
-      'Priority support (12h response)',
-      'Monthly performance report',
-    ],
-  },
-  {
-    name: 'Growth',
-    priceRangeEgp: [3000, 4500],
-    features: [
-      'Everything in Standard',
-      'Dedicated account manager',
-      'Weekly analytics & optimization',
-      'Quarterly strategy call',
-    ],
-    isPopular: true,
-  },
-  {
-    name: 'Full Management',
-    priceRangeEgp: [7000, 12000],
-    features: [
-      'Everything in Growth',
-      'Daily backups & monitoring',
-      'Unlimited content updates',
-      '24/7 emergency support',
-    ],
-  },
-];
-
-type Currency = 'EGP' | 'USD';
+type MonthlyPlansData = {
+  title: string;
+  subtitle: string;
+  plans: Plan[];
+};
 
 interface MonthlyPlansProps {
-  currency: Currency;
+  currency: 'EGP' | 'USD';
 }
 
 export default function MonthlyPlans({ currency }: MonthlyPlansProps) {
+  const { content } = useLanguage();
+  const pricing = content.pricing || {};
+  const monthlyPlansData = pricing.monthlyPlans || {
+    title: 'Monthly Hosting & Maintenance',
+    subtitle: 'Choose a plan that grows with your business. All plans include hosting, security, and support.',
+    plans: [
+      {
+        name: 'Basic',
+        priceRangeEgp: [500, 900],
+        features: [
+          'Basic website hosting',
+          'Email support (24h response)',
+          'Monthly security scan',
+        ],
+      },
+      {
+        name: 'Standard',
+        priceRangeEgp: [1500, 2500],
+        features: [
+          'Everything in Basic',
+          'Priority support (12h response)',
+          'Monthly performance report',
+        ],
+        isPopular: true,
+      },
+      {
+        name: 'Growth',
+        priceRangeEgp: [3000, 4500],
+        features: [
+          'Everything in Standard',
+          'Dedicated account manager',
+          'Weekly analytics & optimization',
+          'Quarterly strategy call',
+        ],
+        isPopular: false,
+      },
+      {
+        name: 'Full Management',
+        priceRangeEgp: [7000, 12000],
+        features: [
+          'Everything in Growth',
+          'Daily backups & monitoring',
+          'Unlimited content updates',
+          '24/7 emergency support',
+        ],
+      },
+    ],
+  };
+
   const formatPriceRange = (range: [number, number]): string => {
     const [min, max] = range;
     if (currency === 'USD') {
@@ -67,13 +80,13 @@ export default function MonthlyPlans({ currency }: MonthlyPlansProps) {
   return (
     <section>
       <h2 className="font-syne text-[32px] font-bold mb-6 text-center">
-        Monthly Hosting & Maintenance
+        {monthlyPlansData.title}
       </h2>
       <p className="text-fog text-center mb-12 max-w-xl mx-auto">
-        Choose a plan that grows with your business. All plans include hosting, security, and support.
+        {monthlyPlansData.subtitle}
       </p>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {plans.map((plan, index) => (
+        {monthlyPlansData.plans.map((plan, index) => (
           <div key={index} className={`flex flex-col h-full bg-surface rounded-xl p-6 border ${plan.isPopular ? 'border-violet' : 'border-transparent'} transition-border duration-300 hover:border-violet/20`}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-syne text-[24px] font-bold">{plan.name}</h3>

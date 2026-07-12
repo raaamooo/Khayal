@@ -1,9 +1,9 @@
 'use client';
 
-import { useTranslation } from '@/lib/i18n/i18n';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { content } = useLanguage();
   const currentYear = new Date().getFullYear().toString();
 
   return (
@@ -11,62 +11,59 @@ export default function Footer() {
       <div className='max-w-7xl mx-auto px-6 py-12'>
         <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <h3 className='font-syne text-lg mb-4'>{t('footer.quickLinks')}</h3>
+            <h3 className='font-syne text-lg mb-4'>{content.footer.quickLinks}</h3>
             <ul className='space-y-2 text-fog'>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.home')}
+                  {content.nav.home}
                 </a>
               </li>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.services')}
+                  {content.nav.services}
                 </a>
               </li>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.work')}
+                  {content.nav.work}
                 </a>
               </li>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.pricing')}
+                  {content.nav.pricing}
                 </a>
               </li>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.about')}
+                  {content.nav.about}
                 </a>
               </li>
               <li>
                 <a href='#' className='hover:text-lav transition-colors'>
-                  {t('nav.contact')}
+                  {content.nav.contact}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className='font-syne text-lg mb-4'>{t('footer.contact')}</h3>
+            <h3 className='font-syne text-lg mb-4'>{content.footer.contact}</h3>
             <p className='flex items-center space-x-2 text-fog'>
               <span className='flex-shrink-0'>
                 {/* WhatsApp icon */}
-
               </span>
-              <span>{t('footer.whatsApp')}</span>
+              <span>{content.footer.whatsApp}</span>
             </p>
             <p className='flex items-center space-x-2 text-fog mt-2'>
               <span className='flex-shrink-0'>
                 {/* Email icon */}
-
               </span>
-              <span>{t('footer.email')}</span>
+              <span>{content.footer.email}</span>
             </p>
             <p className='flex items-center space-x-2 text-fog mt-2'>
               <span className='flex-shrink-0'>
                 {/* Instagram icon */}
-
               </span>
-              <span>{t('footer.instagram')}</span>
+              <span>{content.footer.instagram}</span>
             </p>
           </div>
         </div>
@@ -74,17 +71,17 @@ export default function Footer() {
           <div className='flex flex-col items-center text-center space-y-4'>
             <p className='text-fog'>
               {/* Replace placeholders for year */}
-              {t('footer.copyright')
+              {content.footer.copyright
                 .replace('{year}', currentYear)
                 .replace('{السنة}', currentYear)}
             </p>
             <div className='flex items-center space-x-4'>
               <a href='#' className='text-fog hover:text-lav transition-colors'>
-                {t('footer.language.english')}
+                {content.footer.language.english}
               </a>
               <span className='w-0.5 h-0.5 bg-gray-400'></span>
               <a href='#' className='text-fog hover:text-lav transition-colors'>
-                {t('footer.language.arabic')}
+                {content.footer.language.arabic}
               </a>
             </div>
           </div>

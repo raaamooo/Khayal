@@ -7,8 +7,11 @@ import AddOnsGrid from '@/components/pricing/AddOnsGrid';
 import MonthlyPlans from '@/components/pricing/MonthlyPlans';
 import BundleDeals from '@/components/pricing/BundleDeals';
 import PricingCTA from '@/components/pricing/PricingCTA';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function PricingPage() {
+  const { content } = useLanguage();
+  const pricing = content.pricing || {};
   const [currency, setCurrency] = useState<'EGP' | 'USD'>('EGP');
 
   return (
@@ -16,14 +19,13 @@ export default function PricingPage() {
       {/* Header */}
       <section className="mb-20 text-center">
         <h1 className="font-syne text-[64px] font-bold mb-4">
-          Transparent Pricing
+          {pricing.title || 'Transparent Pricing'}
         </h1>
         <p className="font-tajawal text-[32px] font-bold text-violet rtl text-right">
-          أسعار واضحة
+          {pricing.titleAr || 'أسعار واضحة'}
         </p>
         <p className="text-fog max-w-xl mx-auto">
-          No hidden fees. No vague quotes. Every price is fixed — and includes everything
-          listed. In Egyptian Pounds.
+          {pricing.description || 'No hidden fees. No vague quotes. Every price is fixed — and includes everything listed. In Egyptian Pounds.'}
         </p>
         <CurrencyToggle currency={currency} setCurrency={setCurrency} />
       </section>

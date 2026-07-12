@@ -3,6 +3,7 @@ import { Syne, Tajawal } from "next/font/google";
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 const syne = Syne({
   weight: ["400", "700", "800"],
@@ -32,9 +33,11 @@ export default function RootLayout({
       className={`${syne.variable} ${tajawal.variable} bg-void text-lavender antialiased`}
     >
       <body className="min-h-flex flex flex-col">
-        <Nav />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Nav />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
