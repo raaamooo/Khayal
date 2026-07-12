@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react'
-import { useLanguage } from '@/context/LanguageContext'
+import { useLanguage } from '@/src/context/LanguageContext'
 
 export default function WorkFilters() {
   const { content } = useLanguage()

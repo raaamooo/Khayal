@@ -1,5 +1,7 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 import ServiceCard from '@/components/services/ServiceCard';
 import { siteConfig } from '@/src/config/siteConfig';
 
@@ -67,19 +69,21 @@ export default function ServicesPage() {
           {servicesData.howItWorks.title}
         </h2>
         <div className="grid gap-8 md:grid-cols-2">
-          {servicesData.howItWorks.steps?.map((step, index) => (
-            <div key={index} className="flex items-start gap-6">
-              <div className="flex-shrink-0 bg-violet/20 text-violet rounded-full p-4 w-12 h-12 flex items-center justify-center">
-                {index + 1}
+          {[servicesData.howItWorks.step1, servicesData.howItWorks.step2, servicesData.howItWorks.step3, servicesData.howItWorks.step4]
+            .filter(Boolean)
+            .map((step, index) => (
+              <div key={index} className="flex items-start gap-6">
+                <div className="flex-shrink-0 bg-violet/20 text-violet rounded-full p-4 w-12 h-12 flex items-center justify-center">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 className="font-syne text-[24px] font-bold mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-fog">{step.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-syne text-[24px] font-bold mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-fog">{step.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </section>

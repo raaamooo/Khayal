@@ -7,7 +7,7 @@ import AddOnsGrid from '@/components/pricing/AddOnsGrid';
 import MonthlyPlans from '@/components/pricing/MonthlyPlans';
 import BundleDeals from '@/components/pricing/BundleDeals';
 import PricingCTA from '@/components/pricing/PricingCTA';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 
 export default function PricingPage() {
   const { content } = useLanguage();

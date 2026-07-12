@@ -1,7 +1,9 @@
+'use client';
+
 import WorkFilters from '@/components/work/WorkFilters'
 import CaseStudy from '@/components/work/CaseStudy'
 import WorkCTA from '@/components/work/WorkCTA'
-import { useLanguage } from '@/context/LanguageContext'
+import { useLanguage } from '@/src/context/LanguageContext'
 
 export default function WorkPage() {
   const { content } = useLanguage()

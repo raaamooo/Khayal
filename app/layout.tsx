@@ -3,7 +3,7 @@ import { Syne, Tajawal } from "next/font/google";
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { LanguageProvider } from '@/context/LanguageContext';
+import { LanguageProvider } from '@/src/context/LanguageContext';
 
 const syne = Syne({
   weight: ["400", "700", "800"],

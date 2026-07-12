@@ -1,4 +1,4 @@
-import { useLanguage } from '@/context/LanguageContext'
+import { useLanguage } from '@/src/context/LanguageContext'
 
 export default function WorkCTA() {
   const { content } = useLanguage()

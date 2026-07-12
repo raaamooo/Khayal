@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 
 type Currency = 'EGP' | 'USD';
 

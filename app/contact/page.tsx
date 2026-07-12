@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 import { siteConfig } from '@/src/config/siteConfig';
 
 export default function Contact() {
@@ -188,7 +188,7 @@ export default function Contact() {
                           {contact.form?.serviceOptions?.map((option, index) => (
                             <option key={index} value={option}>
                               {option}
-                            }
+                            </option>
                           ))}
                         </select>
                       </div>

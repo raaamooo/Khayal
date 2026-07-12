@@ -1,6 +1,8 @@
+'use client';
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import en from '@/content/en';
-import ar from '@/content/ar';
+import en from '@/src/content/en';
+import ar from '@/src/content/ar';
 
 type LanguageContextType = {
   language: 'en' | 'ar';

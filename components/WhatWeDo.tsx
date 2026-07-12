@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 
 export const WhatWeDo = () => {
   const { content } = useLanguage();
@@ -9,7 +9,7 @@ export const WhatWeDo = () => {
 
   return (
     <section className="py-20 bg-relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7zl mx-auto px-6">
         {/* Section label */}
         <h2 className="text-fog text-xs uppercase tracking-widest mb-8">
           {services.tagline || 'What We Build'}
@@ -41,11 +41,6 @@ export const WhatWeDo = () => {
                 {services.brandCharacter.title || 'AI Brand Character'}
               </h3>
 
-              {/* Arabic title */}
-              <h4 className="font-tajawal text-violet text-sm mb-4 direction-rtl text-right">
-                {services.brandCharacter.titleAr || 'الشخصية الذكية للعلامة التجارية'}
-              </h4>
-
               {/* Body */}
               <p className="text-fog text-sm leading-relaxed flex-1">
                 {services.brandCharacter.description || 'A named, voiced avatar that represents your brand on your website, Instagram, and WhatsApp. Speaks, answers, sells — in Arabic and English.'}
@@ -74,9 +69,6 @@ export const WhatWeDo = () => {
               <h3 className="font-syne text-lg text-lavender mb-2">
                 {services.website.title || 'Brand Website'}
               </h3>
-              <h4 className="font-tajawal text-violet text-sm mb-4">
-                {services.website.titleAr || 'الموقع الإلكتروني للعلامة التجارية'}
-              </h4>
               <p className="text-fog text-sm leading-relaxed flex-1">
                 {services.website.description || 'Custom-built bilingual websites in Next.js or no-code. Designed to convert. Optimized for Egypt and international markets.'}
               </p>
@@ -104,9 +96,6 @@ export const WhatWeDo = () => {
               <h3 className="font-syne text-lg text-lavender mb-2">
                 {services.identity.title || 'Brand Identity'}
               </h3>
-              <h4 className="font-tajawal text-violet text-sm mb-4">
-                {services.identity.titleAr || 'هوية العلامة التجارية'}
-              </h4>
               <p className="text-fog text-sm leading-relaxed flex-1">
                 {services.identity.description || 'Logo, colors, typography, and tone of voice. Everything a brand needs to exist with intention.'}
               </p>

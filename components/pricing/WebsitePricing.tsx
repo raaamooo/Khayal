@@ -1,15 +1,12 @@
 'use client';
 
-import { useLanguage } from '@/context/LanguageContext';
-
-interface PriceRange {
-  egp: [number, number]; // [min, max] in EGP
-}
+import { useLanguage } from '@/src/context/LanguageContext';
 
 interface PricingTier {
   name: string;
   pages: string; // e.g., "1–3 pages"
-  priceRange: PriceRange;
+  priceRangeEgp: [number, number]; // [min, max] in EGP
+  isNoCode?: boolean;
 }
 
 export default function WebsitePricing({ currency }: { currency: 'EGP' | 'USD' }) {
@@ -19,22 +16,22 @@ export default function WebsitePricing({ currency }: { currency: 'EGP' | 'USD' }
   const coded = website.coded || {};
 
   // Get tier data from content, with fallback to hardcoded values
-  const allTiers = website.tiers || [];
+  const allTiers = (website.tiers || []) as PricingTier[];
   const noCodeTiers = allTiers.filter(tier => tier.isNoCode) || [
     {
       name: 'Starter',
       pages: '1–3 pages',
-      priceRange: { egp: [4000, 6000] },
+      priceRangeEgp: [4000, 6000],
     },
     {
       name: 'Business',
       pages: '4–6 pages',
-      priceRange: { egp: [8000, 12000] },
+      priceRangeEgp: [8000, 12000],
     },
     {
       name: 'Professional',
       pages: '7–10 pages',
-      priceRange: { egp: [14000, 20000] },
+      priceRangeEgp: [14000, 20000],
     },
   ];
 
@@ -42,17 +39,17 @@ export default function WebsitePricing({ currency }: { currency: 'EGP' | 'USD' }
     {
       name: 'Starter',
       pages: '1–3 pages',
-      priceRange: { egp: [10000, 15000] },
+      priceRangeEgp: [10000, 15000],
     },
     {
       name: 'Business',
       pages: '4–6 pages',
-      priceRange: { egp: [18000, 28000] },
+      priceRangeEgp: [18000, 28000],
     },
     {
       name: 'Professional',
       pages: '7–10 pages',
-      priceRange: { egp: [30000, 50000] },
+      priceRangeEgp: [30000, 50000],
     },
   ];
 
@@ -87,7 +84,7 @@ export default function WebsitePricing({ currency }: { currency: 'EGP' | 'USD' }
                 <span className="font-syne">{tier.name}</span>
               </div>
               <div className="text-violet font-bold">
-                {formatPriceRange(tier.priceRange.egp)}
+                {formatPriceRange(tier.priceRangeEgp)}
               </div>
             </div>
           ))}
@@ -110,7 +107,7 @@ export default function WebsitePricing({ currency }: { currency: 'EGP' | 'USD' }
                 <span className="font-syne">{tier.name}</span>
               </div>
               <div className="text-violet font-bold">
-                {formatPriceRange(tier.priceRange.egp)}
+                {formatPriceRange(tier.priceRangeEgp)}
               </div>
             </div>
           ))}

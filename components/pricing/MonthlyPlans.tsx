@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/src/context/LanguageContext';
 
 type Plan = {
   name: string;
@@ -22,7 +22,7 @@ interface MonthlyPlansProps {
 export default function MonthlyPlans({ currency }: MonthlyPlansProps) {
   const { content } = useLanguage();
   const pricing = content.pricing || {};
-  const monthlyPlansData = pricing.monthlyPlans || {
+  const monthlyPlansData = (pricing.monthlyPlans || {
     title: 'Monthly Hosting & Maintenance',
     subtitle: 'Choose a plan that grows with your business. All plans include hosting, security, and support.',
     plans: [
@@ -67,7 +67,7 @@ export default function MonthlyPlans({ currency }: MonthlyPlansProps) {
         ],
       },
     ],
-  };
+  }) as MonthlyPlansData;
 
   const formatPriceRange = (range: [number, number]): string => {
     const [min, max] = range;
