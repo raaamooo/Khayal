@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -58,7 +60,7 @@ export default function Nav() {
                     x1='1'
                     y1='9'
                     x2='9'
-                    y2:'1'
+                    y2='1'
                     stroke='currentColor'
                     strokeWidth='2'
                     strokeLinecap='round'
@@ -102,13 +104,11 @@ export default function Nav() {
             </Link>
             <Link
               href='/pricing'
-              className={
-                activeClassName={
-                  `${pathname === '/pricing'
-                    ? 'text-violet font-semibold'
-                    : 'text-hover text-fog hover:text-lav transition-colors'}`
-                }
-              >
+              className={`${pathname === '/pricing'
+                ? 'text-violet font-semibold'
+                : 'text-hover text-fog hover:text-lav transition-colors'}`
+              }
+            >
               Pricing
             </Link>
             <Link
@@ -140,13 +140,11 @@ export default function Nav() {
               className='md:hidden p-2 rounded-full hover:bg-lavender/20'
             >
               {isOpen ? (
-                {/* X icon (close) */}
                 <svg className='h-4 w-4 text-lav' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                   <line x1='18' y1='6' x2='6' y2='18' />
                   <line x1='6' y1='6' x2='18' y2='18' />
                 </svg>
               ) : (
-                {/* Menu icon (hamburger) */}
                 <svg className='h-4 w-4 text-lav' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                   <line x1='3' y1='12' x2='21' y2='12' />
                   <line x1='3' y1='6' x2='21' y2='6' />
@@ -170,49 +168,37 @@ export default function Nav() {
               <div className='px-6 pt-8 pb-4 space-y-6'>
                 <Link
                   href='/'
-                  className={`${pathname === '/' || (pathname === '' && typeof window !== 'undefined')
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/' || (pathname === '' && typeof window !== 'undefined') ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   Home
                 </Link>
                 <Link
                   href='/services'
-                  className={`${pathname === '/services'
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/services' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   Services
                 </Link>
                 <Link
                   href='/work'
-                  className={`${pathname === '/work'
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/work' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   Work
                 </Link>
                 <Link
                   href='/pricing'
-                  className={`${pathname === '/pricing'
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/pricing' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   Pricing
                 </Link>
                 <Link
                   href='/about'
-                  className={`${pathname === '/about'
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/about' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   About
                 </Link>
                 <Link
                   href='/contact'
-                  className={`${pathname === '/contact'
-                    ? 'block px-4 py-3 text-lg font-syne text-violet'
-                    : 'block px-4 py-3 text-lg font-siamine text-hover text-fog hover:text-lav transition-colors'}`
+                  className={`${pathname === '/contact' ? 'block px-4 py-3 text-lg font-syne text-violet' : 'block px-4 py-3 text-lg font-syne text-hover text-fog hover:text-lav transition-colors'}`}
                 >
                   Contact
                 </Link>
