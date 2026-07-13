@@ -34,9 +34,6 @@ export default function Contact() {
           <h1 className="font-syne text-[64px] text-lavender mb-4">
             {contact.header?.title || "Let's Talk."}
           </h1>
-          <p className="font-tajawal text-[32px] text-violet rtl text-right">
-            {contact.header?.titleAr || "لنتحدث."}
-          </p>
           <p className="font-syne text-[22px] text-fog max-w-2xl mx-auto leading-relaxed">
             {contact.header?.description || "Tell us about your brand. We'll tell you what we can build."}
           </p>
@@ -229,9 +226,6 @@ export default function Contact() {
                       <h1 className="font-syne text-[36px] text-lavender mb-2">
                         {contact.form?.success?.title || "We got it."}
                       </h1>
-                      <p className="font-tajawal text-[24px] text-violet rtl text-right">
-                        {contact.form?.success?.titleAr || "استلمنا رسالتك."}
-                      </p>
                       <p className="text-fog text-[18px] leading-relaxed max-w-md mx-auto">
                         {contact.form?.success?.description || "We'll be in touch on WhatsApp within 24 hours."}
                       </p>

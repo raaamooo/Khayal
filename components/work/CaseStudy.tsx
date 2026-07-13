@@ -44,15 +44,9 @@ export default function CaseStudy({
               <h2 className="font-syne text-[36px] font-bold mb-2">
                 {title}
               </h2>
-              <p className="font-tajawal text-[18px] text-fog rtl text-right mb-4">
-                {titleAr}
-              </p>
 
               <p className="text-fog leading-relaxed mb-4">
                 {description}
-              </p>
-              <p className="font-tajawal text-fog rtl text-right">
-                {descriptionAr}
               </p>
 
               {/* Results row */}
@@ -191,15 +185,9 @@ export default function CaseStudy({
               <h2 className="font-syne text-[36px] font-bold mb-2">
                 {title}
               </h2>
-              <p className="font-tajawal text-[18px] text-fog rtl text-right mb-4">
-                {titleAr}
-              </p>
 
               <p className="text-fog leading-relaxed mb-4">
                 {description}
-              </p>
-              <p className="font-tajawal text-fog rtl text-right">
-                {descriptionAr}
               </p>
 
               {/* Results row */}

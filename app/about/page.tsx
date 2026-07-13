@@ -19,9 +19,6 @@ export default function About() {
           <h1 className="font-syne text-[64px] text-lavender mb-4">
             {about.header?.title || "We're Khayal."}
           </h1>
-          <p className="font-tajawal text-[32px] text-violet rtl text-right">
-            {about.header?.titleAr || "نحن خيال."}
-          </p>
           <p className="font-syne text-[22px] text-lavender max-w-2xl mx-auto leading-relaxed">
             {about.header?.description || "Khayal means imagination in Arabic. That's exactly what we do — we take what a brand could be, and make it real."}
           </p>
@@ -113,9 +110,6 @@ export default function About() {
             <div className="text-center md:text-left">
               <p className="font-syne text-[40px] text-lavender mb-2">
                 {about.location?.title || "Based in Egypt."}
-              </p>
-              <p className="font-tajawal text-[24px] text-violet rtl text-right mb-2">
-                {about.location?.titleAr || "مقرنا في مصر."}
               </p>
               <p className="font-syne text-fog text-[16px] leading-relaxed max-w-md">
                 {about.location?.description || "Alexandria and Luxor. Working with clients across Egypt, the Gulf, and internationally."}

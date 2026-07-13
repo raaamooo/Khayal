@@ -68,18 +68,7 @@ export const Hero = () => {
           </h1>
         </motion.div>
 
-        {/* Arabic subheadline */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-          }}
-          className="mb-8"
-        >
-          <h2 className="font-tajawal text-xl sm:text-2xl md:text-3xl text-violet/80 direction-rtl">
-            {content.hero.titleAr}
-          </h2>
-        </motion.div>
+
 
         {/* Body copy */}
         <motion.div

@@ -9,9 +9,7 @@ export default function WorkCTA() {
       <h2 className="font-syne text-[40px] font-bold mb-6">
         {cta.title || 'Working on something?'}
       </h2>
-      <p className="font-tajawal text-[24px] text-violet rtl mb-8">
-        {cta.titleAr || 'هل تعمل على شيء ما؟'}
-      </p>
+
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/contact"
