@@ -15,13 +15,13 @@ export default function WorkCTA() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/contact"
-          className="flex-1 sm:max-w-xs inline-block px-8 py-4 font-syne bg-violet text-white rounded-lg hover:bg-violet/90 transition-colors"
+          className="btn-primary w-full sm:w-auto"
         >
           {cta.primary || 'Start a Project'}
         </a>
         <a
           href="/pricing"
-          className="flex-1 sm:max-w-xs inline-block px-8 py-4 font-syne border border-lavender text-lavender hover:bg-lavender/20 rounded-lg transition-colors"
+          className="btn-secondary w-full sm:w-auto"
         >
           {cta.secondary || 'See Pricing'}
         </a>

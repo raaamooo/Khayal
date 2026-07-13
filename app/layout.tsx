@@ -17,6 +17,8 @@ const tajawal = Tajawal({
   variable: "--font-tajawal",
 });
 
+import { ThemeProvider } from '@/src/context/ThemeContext';
+
 export const metadata: Metadata = {
   title: "Khayal Studio – AI Brand Characters & Websites",
   description: "Khayal Studio builds AI-powered brand characters and bilingual websites that speak, sell, and connect with customers 24/7.",
@@ -30,14 +32,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${tajawal.variable} bg-void text-lavender antialiased`}
+      className={`${syne.variable} ${tajawal.variable} antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col">
-        <LanguageProvider>
-          <Nav />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <Nav />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

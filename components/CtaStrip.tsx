@@ -48,7 +48,7 @@ export const CtaStrip = () => {
           >
             <a
               href="/contact"
-              className="btn-glow inline-block rounded-full px-10 py-4 text-base font-bold font-syne tracking-wide"
+              className="btn-primary"
             >
               {content.pricing.cta?.button || 'Book a Free Call'}
             </a>

@@ -147,7 +147,7 @@ export default function About() {
           </h1>
           <a
             href="/contact"
-            className="bg-violet text-white rounded-full px-10 py-4 text-base font-bold hover:bg-violet/90 transition-colors"
+            className="btn-primary"
           >
             {about.cta?.button || "Start a Conversation"}
           </a>

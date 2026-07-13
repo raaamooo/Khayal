@@ -102,13 +102,13 @@ export const Hero = () => {
         >
           <a
             href="#work"
-            className="btn-glow px-8 py-4 rounded-full text-sm font-bold tracking-wide font-syne"
+            className="btn-primary"
           >
             {content.hero.cta.viewWork}
           </a>
           <a
             href="#demo"
-            className="btn-ghost px-8 py-4 rounded-full text-sm font-syne tracking-wide"
+            className="btn-secondary"
           >
             {content.hero.cta.bookDemo}
           </a>

@@ -69,7 +69,7 @@ export default function Contact() {
                         href={`https://wa.me/${siteConfig.contact.whatsapp.number.replace(/\s+/g, '').replace('+', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-violet text-white rounded-full text-sm px-6 py-2"
+                        className="btn-primary !px-6 !py-2 text-sm"
                       >
                         {contact.contactInfo?.whatsapp?.action || "Message Us"}
                       </a>
@@ -121,7 +121,7 @@ export default function Contact() {
                   </p>
                   <a
                     href={siteConfig.booking.link}
-                    className="border border-violet text-violet rounded-full px-6 py-2 text-sm"
+                    className="btn-secondary !px-6 !py-2 text-sm mt-4 inline-block"
                   >
                     {siteConfig.booking.label}
                   </a>
@@ -215,7 +215,7 @@ export default function Contact() {
                       {/* Submit Button */}
                       <button
                         type="submit"
-                        className="bg-violet text-white rounded-xl py-4 w-full font-bold text-base hover:bg-violet/90 transition-colors"
+                        className="btn-primary w-full !rounded-xl"
                       >
                         {contact.form?.submitButton || "Send Message"}
                       </button>

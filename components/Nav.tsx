@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/src/context/LanguageContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Nav() {
   const { language, setLanguage, content } = useLanguage();
@@ -91,8 +92,9 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            {/* Language Switcher */}
-            <div className='flex-shrink-0 ml-4 rtl:mr-4 rtl:ml-0'>
+            {/* Theme & Language Switchers */}
+            <div className='flex items-center gap-4 ml-4 rtl:mr-4 rtl:ml-0'>
+              <ThemeToggle />
               <LanguageSwitcher />
             </div>
           </div>
@@ -151,13 +153,14 @@ export default function Nav() {
                       </Link>
                     </motion.div>
                   ))}
-                  {/* Language Switcher in mobile menu */}
+                  {/* Switchers in mobile menu */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navLinks.length * 0.05 }}
-                    className='px-4 pt-4'
+                    className='px-4 pt-4 flex items-center gap-4'
                   >
+                    <ThemeToggle />
                     <LanguageSwitcher />
                   </motion.div>
                 </nav>

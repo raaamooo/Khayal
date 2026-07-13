@@ -1,4 +1,35 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  :root {
+    --color-void: #EEEAFF;
+    --color-surface: #FFFFFF;
+    --color-lavender: #06060E;
+    --color-fog: #6B6B8A;
+    --color-violet: #7C3AED;
+    --color-violet-light: #C084FC;
+    --color-violet-dark: #6320D6;
+    --color-ember: #E85D26;
+    --color-ember-light: #FF8C5A;
+    --color-ember-dark: #C94A1A;
+    --color-glass: rgba(255, 255, 255, 0.7);
+  }
+
+  .dark {
+    --color-void: #06060E;
+    --color-surface: #0F0F1A;
+    --color-lavender: #E8E4FF;
+    --color-fog: #6B6B8A;
+    --color-violet: #A259FF;
+    --color-violet-light: #C084FC;
+    --color-violet-dark: #7C3AED;
+    --color-ember: #FF6B35;
+    --color-ember-light: #FF8C5A;
+    --color-ember-dark: #E85D26;
+    --color-glass: rgba(15, 15, 26, 0.7);
+  }
+}
 
 /* ────────────────────────────────────────────
    Custom font classes
@@ -18,8 +49,9 @@ html {
 }
 
 body {
-  @apply bg-transparent text-inherit antialiased;
+  @apply bg-void text-lavender antialiased;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ────────────────────────────────────────────
@@ -29,7 +61,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #06060E;
+  background: var(--color-void);
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(162, 89, 255, 0.3);
@@ -43,7 +75,7 @@ body {
    Glass Card
    ──────────────────────────────────────────── */
 .glass-card {
-  background: rgba(15, 15, 26, 0.6);
+  background: var(--color-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(162, 89, 255, 0.08);
@@ -52,7 +84,7 @@ body {
 }
 .glass-card:hover {
   border-color: rgba(162, 89, 255, 0.2);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(162, 89, 255, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(162, 89, 255, 0.1);
   transform: translateY(-2px);
 }
 
@@ -60,36 +92,36 @@ body {
    Gradient Text
    ──────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #E8E4FF 0%, #A259FF 50%, #FF6B35 100%);
+  background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-violet) 50%, var(--color-ember) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-violet {
-  background: linear-gradient(135deg, #C084FC, #A259FF, #7C3AED);
+  background: linear-gradient(135deg, var(--color-violet-light), var(--color-violet), var(--color-violet-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ────────────────────────────────────────────
-   Glow Button
+   Unified Buttons
    ──────────────────────────────────────────── */
-.btn-glow {
-  background: linear-gradient(135deg, #A259FF, #7C3AED);
-  color: white;
-  border: none;
+.btn-primary {
+  @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-syne font-bold transition-all duration-300;
+  background: linear-gradient(135deg, var(--color-violet), var(--color-violet-dark));
+  color: #FFFFFF;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(162, 89, 255, 0.3);
+  box-shadow: 0 4px 14px 0 rgba(162, 89, 255, 0.39);
 }
-.btn-glow:hover {
-  box-shadow: 0 0 30px rgba(162, 89, 255, 0.5), 0 0 60px rgba(162, 89, 255, 0.2);
-  transform: translateY(-1px);
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(162, 89, 255, 0.23);
+  background: linear-gradient(135deg, var(--color-violet-light), var(--color-violet));
 }
-.btn-glow::after {
+.btn-primary::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -99,25 +131,27 @@ body {
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.15) 50%,
     transparent 70%
   );
   animation: shimmer 3s ease-in-out infinite;
 }
 
-.btn-ghost {
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-syne font-bold transition-all duration-300;
   background: transparent;
-  border: 1px solid rgba(232, 228, 255, 0.15);
-  color: #E8E4FF;
-  transition: all 0.3s ease;
+  border: 1px solid var(--color-violet);
+  color: var(--color-violet);
   position: relative;
   overflow: hidden;
 }
-.btn-ghost:hover {
-  border-color: rgba(162, 89, 255, 0.4);
+.btn-secondary:hover {
+  border-color: var(--color-violet-light);
   background: rgba(162, 89, 255, 0.06);
   box-shadow: 0 0 20px rgba(162, 89, 255, 0.1);
+  color: var(--color-violet-light);
 }
+
 
 /* ────────────────────────────────────────────
    Nav Link with animated underline
@@ -133,7 +167,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #A259FF, #FF6B35);
+  background: linear-gradient(90deg, var(--color-violet), var(--color-ember));
   border-radius: 1px;
   transition: width 0.3s ease;
 }
@@ -218,5 +252,5 @@ body {
    ──────────────────────────────────────────── */
 ::selection {
   background: rgba(162, 89, 255, 0.3);
-  color: #E8E4FF;
+  color: var(--color-lavender);
 }

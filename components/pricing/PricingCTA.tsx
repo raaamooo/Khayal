@@ -19,7 +19,7 @@ export default function PricingCTA({ currency }: PricingCTAProps) {
       </p>
       <a
         href="/contact"
-        className="inline-block px-8 py-4 font-syne bg-violet text-white rounded-lg hover:bg-violet/90 transition-colors"
+        className="btn-primary"
       >
         {cta.button || 'Get a Custom Quote'}
       </a>

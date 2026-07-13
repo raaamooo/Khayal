@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: 'class', // Enable class-based dark mode
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -8,17 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: '#06060E',
-        violet: '#A259FF',
-        'violet-light': '#C084FC',
-        'violet-dark': '#7C3AED',
-        ember: '#FF6B35',
-        'ember-light': '#FF8C5A',
-        'ember-dark': '#E85D26',
-        lavender: '#E8E4FF',
-        fog: '#6B6B8A',
-        surface: '#0F0F1A',
-        glass: 'rgba(15, 15, 26, 0.7)',
+        void: 'var(--color-void)',
+        violet: 'var(--color-violet)',
+        'violet-light': 'var(--color-violet-light)',
+        'violet-dark': 'var(--color-violet-dark)',
+        ember: 'var(--color-ember)',
+        'ember-light': 'var(--color-ember-light)',
+        'ember-dark': 'var(--color-ember-dark)',
+        lavender: 'var(--color-lavender)',
+        fog: 'var(--color-fog)',
+        surface: 'var(--color-surface)',
+        glass: 'var(--color-glass)',
       },
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
@@ -37,10 +38,10 @@ const config: Config = {
         'card-hover': '0 8px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(162, 89, 255, 0.15)',
       },
       backgroundImage: {
-        'gradient-violet': 'linear-gradient(135deg, #A259FF, #7C3AED)',
-        'gradient-ember': 'linear-gradient(135deg, #FF6B35, #E85D26)',
-        'gradient-mixed': 'linear-gradient(135deg, #A259FF, #FF6B35)',
-        'gradient-cta': 'linear-gradient(135deg, #A259FF 0%, #7C3AED 50%, #FF6B35 100%)',
+        'gradient-violet': 'linear-gradient(135deg, var(--color-violet), var(--color-violet-dark))',
+        'gradient-ember': 'linear-gradient(135deg, var(--color-ember), var(--color-ember-dark))',
+        'gradient-mixed': 'linear-gradient(135deg, var(--color-violet), var(--color-ember))',
+        'gradient-cta': 'linear-gradient(135deg, var(--color-violet) 0%, var(--color-violet-dark) 50%, var(--color-ember) 100%)',
         'gradient-glass': 'linear-gradient(135deg, rgba(162, 89, 255, 0.08), rgba(255, 107, 53, 0.04))',
         'gradient-radial-violet': 'radial-gradient(circle at 50% 50%, rgba(162, 89, 255, 0.15) 0%, transparent 60%)',
         'dot-pattern': 'radial-gradient(circle, rgba(162, 89, 255, 0.12) 1px, transparent 1px)',
