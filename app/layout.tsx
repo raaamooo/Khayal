@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${syne.variable} ${tajawal.variable} bg-void text-lavender antialiased`}
     >
-      <body className="min-h-flex flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <LanguageProvider>
           <Nav />
           <main className="flex-grow">{children}</main>

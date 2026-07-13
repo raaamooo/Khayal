@@ -7,8 +7,30 @@ export const Hero = () => {
   const { content } = useLanguage();
 
   return (
-    <section className="min-h-[100vh] flex flex-col items-center bg-void">
-      {/* We'll wrap the content in a motion container for stagger animation */}
+    <section className="min-h-screen flex flex-col items-center justify-center bg-void relative overflow-hidden pt-20">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-40" />
+      <div className="absolute inset-0 bg-gradient-radial-violet" />
+
+      {/* Floating K-mark decoration */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none"
+      >
+        <svg width="600" height="600" viewBox="0 0 58 82" fill="none">
+          <line x1="10" y1="6" x2="10" y2="68" stroke="#A259FF" strokeWidth="4" strokeLinecap="round"/>
+          <line x1="10" y1="37" x2="50" y2="6" stroke="#A259FF" strokeWidth="4" strokeLinecap="round"/>
+          <line x1="10" y1="37" x2="50" y2="68" stroke="#A259FF" strokeWidth="4" strokeLinecap="round"/>
+          <circle cx="30" cy="77" r="5.5" fill="#FF6B35"/>
+        </svg>
+      </motion.div>
+
+      {/* Glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet/5 rounded-full blur-[120px] animate-glow-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-ember/5 rounded-full blur-[100px] animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+
+      {/* Content */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -16,92 +38,77 @@ export const Hero = () => {
           hidden: { opacity: 0 },
           visible: {
             opacity: 1,
-            transition: {
-              staggerChildren: 0.15,
-            },
+            transition: { staggerChildren: 0.15 },
           },
         }}
-        className="flex flex-col items-center text-center py-12"
+        className="flex flex-col items-center text-center py-12 relative z-10 px-6"
       >
         {/* Pill badge */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            hidden: { opacity: 0, y: 20, scale: 0.9 },
+            visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5 } },
           }}
-          className="bg-violet/10 border border-violet/20 text-violet rounded-full px-4 py-1.5 text-xs tracking-widest uppercase mb-6"
+          className="glass-card !rounded-full px-5 py-2 text-xs tracking-[0.2em] uppercase mb-8 text-violet border-violet/20 flex items-center gap-2"
         >
+          <span className="w-1.5 h-1.5 rounded-full bg-violet animate-glow-pulse" />
           {content.hero.pill}
         </motion.div>
 
         {/* English headline */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
           }}
           className="mb-4"
         >
-          <h1
-            className="font-syne text-[72px] leading-none text-lavender md:text-[72px] sm:text-[40px]"
-          >
+          <h1 className="font-syne text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold leading-[0.95] gradient-text">
             {content.hero.title}
           </h1>
         </motion.div>
 
         {/* Arabic subheadline */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
           }}
           className="mb-8"
         >
-          <h2
-            className="font-tajawal text-[28px] text-violet direction-rtl text-right md:text-[28px] sm:text-[20px]"
-          >
+          <h2 className="font-tajawal text-xl sm:text-2xl md:text-3xl text-violet/80 direction-rtl">
             {content.hero.titleAr}
           </h2>
         </motion.div>
 
         {/* Body copy */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
           }}
-          className="max-w-lg mx-auto text-fog text-[16px] leading-relaxed mb-10"
+          className="max-w-lg mx-auto text-fog text-base sm:text-lg leading-relaxed mb-12"
         >
           {content.hero.description}
         </motion.div>
 
         {/* CTA buttons */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
           }}
-          className="flex gap-4 mb-12"
+          className="flex flex-col sm:flex-row gap-4 mb-16"
         >
           <a
             href="#work"
-            className="bg-violet text-white px-8 py-3.5 rounded-full text-sm font-bold tracking-wide hover:bg-violet/90 transition-colors"
+            className="btn-glow px-8 py-4 rounded-full text-sm font-bold tracking-wide font-syne"
           >
             {content.hero.cta.viewWork}
           </a>
           <a
             href="#demo"
-            className="border border-lavender/20 text-lavender px-8 py-3.5 rounded-full text-sm hover:border-lavender/40 transition-colors"
+            className="btn-ghost px-8 py-4 rounded-full text-sm font-syne tracking-wide"
           >
             {content.hero.cta.bookDemo}
           </a>
@@ -109,43 +116,22 @@ export const Hero = () => {
 
         {/* Scroll indicator */}
         <motion.div
-          initial="hidden"
-          animate="visible"
           variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.5, delay: 0.3 } },
           }}
-          className="flex flex-col items-center text-fog text-xs tracking-widest"
+          className="flex flex-col items-center text-fog/60 text-xs tracking-[0.2em] uppercase"
         >
           <motion.div
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            className="flex h-5 w-5 items-center justify-center mb-2"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="mb-2"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 2L12 6H4L8 2Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 6V14"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4v12M10 16l4-4M10 16l-4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </motion.div>
-          <span>{content.hero.scroll}</span>
+          <span className="font-syne">{content.hero.scroll}</span>
         </motion.div>
       </motion.div>
     </section>
