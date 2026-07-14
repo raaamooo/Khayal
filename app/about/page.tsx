@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/src/context/LanguageContext';
+import Button from '@/components/ui/Button';
 
 export default function About() {
   const { content } = useLanguage();
@@ -139,12 +140,13 @@ export default function About() {
           <h1 className="font-syne text-[48px] text-lavender mb-8">
             {about.cta?.title || "Want to work together?"}
           </h1>
-          <a
+          <Button
+            as="a"
             href="/contact"
-            className="btn-primary"
+            size="md"
           >
             {about.cta?.button || "Start a Conversation"}
-          </a>
+          </Button>
         </section>
       </motion.div>
     </>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from '@/src/context/LanguageContext';
+import Button from '@/components/ui/Button';
 
 export const CtaStrip = () => {
   const { content } = useLanguage();
@@ -46,12 +47,14 @@ export const CtaStrip = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a
+            <Button
+              as="a"
               href="/contact"
-              className="btn-primary"
+              className=""
+              size="lg"
             >
               {content.pricing.cta?.button || 'Book a Free Call'}
-            </a>
+            </Button>
           </motion.div>
         </div>
       </div>

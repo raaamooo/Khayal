@@ -21,12 +21,12 @@ export default function LanguageSwitcher() {
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
         />
         <span className={`relative z-10 px-2.5 py-1 text-xs font-syne font-bold rounded-full transition-colors duration-300 ${
-          language === 'en' ? 'text-white' : 'text-fog'
+          language === 'en' ? 'text-lavender' : 'text-fog'
         }`}>
           EN
         </span>
         <span className={`relative z-10 px-2.5 py-1 text-xs font-syne font-bold rounded-full transition-colors duration-300 ${
-          language === 'ar' ? 'text-white' : 'text-fog'
+          language === 'ar' ? 'text-lavender' : 'text-fog'
         }`}>
           ع
         </span>

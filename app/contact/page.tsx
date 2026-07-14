@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/src/context/LanguageContext';
 import { siteConfig } from '@/src/config/siteConfig';
+import Button from '@/components/ui/Button';
 
 export default function Contact() {
   const { content } = useLanguage();
@@ -62,14 +63,16 @@ export default function Contact() {
                       <p className="text-lavender font-bold text-lg">
                         {siteConfig.contact.whatsapp.number}
                       </p>
-                      <a
+                      <Button
+                        as="a"
                         href={`https://wa.me/${siteConfig.contact.whatsapp.number.replace(/\s+/g, '').replace('+', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary !px-6 !py-2 text-sm"
+                        className="px-6 py-2 text-sm"
+                        size="sm"
                       >
                         {contact.contactInfo?.whatsapp?.action || "Message Us"}
-                      </a>
+                      </Button>
                       <p className="text-fog text-xs">
                         {contact.contactInfo?.whatsapp?.note || "Fastest response — usually within 2 hours"}
                       </p>
@@ -116,12 +119,14 @@ export default function Contact() {
                   <p className="text-lavender text-sm leading-relaxed">
                     {siteConfig.booking.description}
                   </p>
-                  <a
+                  <Button
+                    as="a"
                     href={siteConfig.booking.link}
-                    className="btn-secondary !px-6 !py-2 text-sm mt-4 inline-block"
+                    className="mt-4 inline-block px-6 py-2 text-sm"
+                    size="sm"
                   >
                     {siteConfig.booking.label}
-                  </a>
+                  </Button>
                 </div>
               </div>
 
@@ -210,12 +215,12 @@ export default function Contact() {
                       </div>
 
                       {/* Submit Button */}
-                      <button
+                      <Button
                         type="submit"
-                        className="btn-primary w-full !rounded-xl"
+                        className="w-full rounded-xl"
                       >
                         {contact.form?.submitButton || "Send Message"}
-                      </button>
+                      </Button>
                     </form>
                   ) : (
                     <div className="text-center space-y-4">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/src/context/LanguageContext';
+import Button from '@/components/ui/Button';
 
 type Currency = 'EGP' | 'USD';
 
@@ -17,12 +18,13 @@ export default function PricingCTA({ currency }: PricingCTAProps) {
       <p className="text-fog text-sm italic mb-6">
         {cta.note || 'All prices in Egyptian Pounds. Setup fee required before project begins. Minimum 3-month commitment on monthly plans.'}
       </p>
-      <a
+      <Button
+        as="a"
         href="/contact"
-        className="btn-primary"
+        size="md"
       >
         {cta.button || 'Get a Custom Quote'}
-      </a>
+      </Button>
     </section>
   );
 }

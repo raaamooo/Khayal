@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from '@/src/context/LanguageContext';
+import Button from '@/components/ui/Button';
 
 export const Hero = () => {
   const { content } = useLanguage();
@@ -89,18 +90,18 @@ export const Hero = () => {
           }}
           className="flex flex-col sm:flex-row gap-4 mb-16"
         >
-          <a
+          <Button
+            as="a"
             href="#work"
-            className="btn-primary"
           >
             {content.hero.cta.viewWork}
-          </a>
-          <a
+          </Button>
+          <Button
+            as="a"
             href="#demo"
-            className="btn-secondary"
           >
             {content.hero.cta.bookDemo}
-          </a>
+          </Button>
         </motion.div>
 
         {/* Scroll indicator */}

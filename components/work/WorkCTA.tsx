@@ -1,4 +1,5 @@
 import { useLanguage } from '@/src/context/LanguageContext'
+import Button from '@/components/ui/Button'
 
 export default function WorkCTA() {
   const { content } = useLanguage()
@@ -11,18 +12,20 @@ export default function WorkCTA() {
       </h2>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
+        <Button
+          as="a"
           href="/contact"
-          className="btn-primary w-full sm:w-auto"
+          size="md"
         >
           {cta.primary || 'Start a Project'}
-        </a>
-        <a
+        </Button>
+        <Button
+          as="a"
           href="/pricing"
-          className="btn-secondary w-full sm:w-auto"
+          size="md"
         >
           {cta.secondary || 'See Pricing'}
-        </a>
+        </Button>
       </div>
     </section>
   );
