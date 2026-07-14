@@ -1,12 +1,14 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   as?: keyof JSX.IntrinsicElements;
   size?: 'lg' | 'md' | 'sm';
+  className?: string;
+  children: React.ReactNode;
 }
 
-const Button = React.forwardRef<HTMLElement, ButtonProps>(
-  ({ as = 'button', className, size = 'md', ...props }, ref) => {
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  ({ as = 'button', className, size = 'md', children, ...props }, ref) => {
     const baseClasses = `
       bg-violet text-white font-syne font-bold text-sm
       rounded-full transition-colors duration-200
@@ -28,11 +30,11 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
 
     return (
       <Component
-        ref={ref}
+        ref={ref as React.Ref<any>}
         className={classes}
         {...props}
       >
-        {props.children}
+        {children}
       </Component>
     );
   }

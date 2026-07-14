@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/src/context/LanguageContext'
+import Button from '@/components/ui/Button'
 
 export default function WorkFilters() {
   const { content } = useLanguage()
@@ -14,16 +15,17 @@ export default function WorkFilters() {
   return (
     <div className="flex flex-wrap gap-4 mb-8">
       {filters.map((f) => (
-        <button
+        <Button
           key={f}
           onClick={() => setActiveFilter(f)}
-          className={`px-4 py-2 rounded-full text-sm font-syne
+          className={`
             ${activeFilter === f
               ? 'bg-violet text-white'
               : 'border border-lavender/10 text-fog hover:bg-lavender/20'}`}
+          size="sm"
         >
           {f}
-        </button>
+        </Button>
       ))}
     </div>
   )
